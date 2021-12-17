@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useMoralis, useMoralisQuery } from "react-moralis";
 import { MESSAGES_TABLE_NAME, MINS_DURATION } from "../constants";
 import Message from "./Message";
@@ -18,6 +18,10 @@ const Messages = () => {
       live: true,
     }
   );
+
+  useEffect(() => {
+    endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [data]);
 
   return (
     <div className="pb-36">
